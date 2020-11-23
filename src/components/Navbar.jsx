@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import { RiMovie2Line, RiHeartFill,RiMoonFill, RiSunFill } from "react-icons/ri";
 import Favorite from "./Favorite";
+import Like from "./Like";
 
 const Navbar = ({darkMode, setDarkMode, sidebarOpen, setSidebarOpen}) => {
   
@@ -19,7 +20,7 @@ const Navbar = ({darkMode, setDarkMode, sidebarOpen, setSidebarOpen}) => {
             <span>
               <RiMovie2Line />
             </span>{" "}
-            Movify
+            Movify <Like />
           </Link>
         </div>
 

@@ -34,6 +34,17 @@ svg {
   display: none !important;
 }
 
+::-webkit-scrollbar {
+  background: #eeeeee;
+  width: 10px;
+  margin: 0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #36434d;
+  border-radius: 10px;
+}
+
 .navbar {
   padding: 1rem 2.5rem;
   margin-bottom: 5rem;
@@ -141,7 +152,7 @@ svg {
   top: 0;
   bottom: 0;
   width: 25rem;
-  transition: all 0.3s;
+  transition: all 0.7s;
 }
 .favorite-container .close-favorite {
   display: flex;
@@ -159,9 +170,11 @@ svg {
 .slider .slider__card {
   margin: 0 1rem;
   padding: 0.5rem;
+  height: 450px;
 }
 .slider .slider__card img {
   width: 100%;
+  height: 100%;
   object-fit: cover;
   border-radius: 10px;
 }

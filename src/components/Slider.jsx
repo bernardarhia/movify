@@ -6,21 +6,10 @@ import localForage from 'localforage';
 const responsive = {
   superLargeDesktop: {
     // the naming can be any, depends on you.
-    breakpoint: { max: 4000, min: 3000 },
-    items: 2
+    breakpoint: { max: 4000, min:0},
+    items: 1
   },
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 2
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 768 },
-    items: 3
-  },
-  mobile: {
-    breakpoint: { max: 767, min: 0 },
-    items: 2
-  }
+ 
 };
 const Slider = ()=>{
   const [recommendedMovies, setRecommendedMovies] = useState([]);
@@ -57,24 +46,6 @@ transitionDuration={1000}
  
   <div className="slider__card">
     <img src="https://www.pexels.com/photo/5425710/download/?search_query=&tracking_id=9c5h6odcgud" alt=""/>
- 
-      <h1 className="head">
-        Thor
-      </h1>
-  </div>
-  <div className="slider__card">
-    <img src="https://www.pexels.com/photo/5425710/download/?search_query=&tracking_id=9c5h6odcgud" alt=""/>
- 
-      <h1 className="head">
-        Hulk
-      </h1>
-  </div>
-  <div className="slider__card">
-    <img src="https://www.pexels.com/photo/5425710/download/?search_query=&tracking_id=9c5h6odcgud" alt=""/>
- 
-      <h1 className="head">
-        Shazam
-      </h1>
   </div>
 </Carousel>
     </div>
