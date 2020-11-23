@@ -185,12 +185,24 @@ svg {
   bottom: 0;
   width: 25rem;
   transition: all 0.7s;
+  z-index: 2222;
 }
 .favorite-container .close-favorite {
   display: flex;
   justify-content: flex-end;
   font-size: 1.5rem;
   margin: 2rem 2.1rem 0 0;
+}
+.favorite-container .favorite__lists ul {
+  text-align: center;
+  width: 96%;
+  margin: 0 auto;
+}
+.favorite-container .favorite__lists ul li {
+  width: 100%;
+  padding: 1rem 0;
+  background: blue;
+  margin: 1rem 0;
 }
 
 .slider {
