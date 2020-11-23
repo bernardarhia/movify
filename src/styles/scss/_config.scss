@@ -19,7 +19,6 @@ body,html{
     width: 80%;
     margin: 2rem auto;
     padding: 1rem;
-    // border: 1px solid;
 }
 
 
@@ -56,4 +55,8 @@ svg{
 ::-webkit-scrollbar-thumb{
     background:#36434d;
     border-radius: 10px;
+}
+
+.head{
+    color: #36434d;
 }

@@ -20,7 +20,7 @@ body, html {
   padding: 1rem;
 }
 
-.navbar .nav .icons, .navbar .nav {
+.movie__container .rated, .navbar .nav .icons, .navbar .nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -43,6 +43,10 @@ svg {
 ::-webkit-scrollbar-thumb {
   background: #36434d;
   border-radius: 10px;
+}
+
+.head {
+  color: #36434d;
 }
 
 .navbar {
@@ -177,6 +181,123 @@ svg {
   height: 100%;
   object-fit: cover;
   border-radius: 10px;
+}
+
+.movie__container {
+  border: 1px solid #000;
+  padding: 1rem;
+  margin-bottom: 6rem;
+}
+.movie__container .rated {
+  margin-top: 2.5rem;
+  flex-wrap: wrap;
+}
+.movie__container .rated .rates {
+  padding: 1rem;
+  width: 250px;
+  margin: 1rem;
+  box-shadow: 0 0 43px #cdcdcd59;
+  border-radius: 10px;
+}
+.movie__container .rated .rates .img {
+  position: relative;
+  overflow: hidden;
+}
+.movie__container .rated .rates .img:hover .layer {
+  top: 0;
+  width: 100%;
+}
+.movie__container .rated .rates .img img {
+  width: 100%;
+  height: 100%;
+}
+.movie__container .rated .rates .img .layer {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(rgba(255, 0, 255, 0.1), rgba(255, 0, 0, 0.1));
+  transition: 0.3s ease;
+  width: 0;
+  overflow: hidden;
+}
+.movie__container .rated .rates .img .layer .player__container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  background: #ff4a4a;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  animation: play 1200ms infinite;
+}
+.movie__container .rated .rates .img .layer .player__container svg {
+  font-size: 1.4rem;
+  fill: #e42b2b;
+}
+.movie__container .rated .rates .img .layer .fav {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+.movie__container .rated .rates .img .layer .fav input {
+  display: none;
+}
+.movie__container .rated .rates .img .layer .fav input:checked ~ label svg {
+  fill: #ff1f1f;
+}
+.movie__container .rated .rates .img .layer .fav svg {
+  font-size: 1.4rem;
+  fill: #fff;
+}
+.movie__container .rated .rates p {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
+@keyframes play {
+  0% {
+    background: rgba(255, 74, 74, 0.253);
+    width: 20px;
+    height: 20px;
+  }
+  25% {
+    background: rgba(255, 74, 74, 0.5);
+    width: 30px;
+    height: 30px;
+  }
+  50% {
+    background: rgba(255, 74, 74, 0.75);
+    width: 40px;
+    height: 40px;
+  }
+  100% {
+    background: #ff4a4a;
+    width: 50px;
+    height: 50px;
+  }
+}
+.prev {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+.prev button {
+  display: inline-block;
+  margin: 0 1rem;
+  padding: 0.5rem;
+  color: #fff;
+  font-size: 0.95rem;
+  border: none;
+  background: #252525;
 }
 
 /*# sourceMappingURL=style.css.map */

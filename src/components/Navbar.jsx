@@ -1,17 +1,43 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { RiMovie2Line, RiHeartFill,RiMoonFill, RiSunFill } from "react-icons/ri";
+import {
+  RiMovie2Line,
+  RiHeartFill,
+  RiMoonFill,
+  RiSunFill,
+} from "react-icons/ri";
 import Favorite from "./Favorite";
 import Like from "./Like";
-
-const Navbar = ({darkMode, setDarkMode, sidebarOpen, setSidebarOpen}) => {
+const Navbar = () => {
   
+  const [darkMode, setDarkMode] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  useEffect(() => {
+    // setting fonts colors
+    const body = document.querySelector("body");
+    const para = document.querySelector(".para p");
+    const headings = document.querySelectorAll(".head");
 
-    const handleSidebar = ()=>{
-      setSidebarOpen(!sidebarOpen);
+    body.style.background = !darkMode ? "white" : "#000000ed";
+    if (body.style.background === "rgba(0, 0, 0, 0.93)") {
+      para.style.color = "#fff";
+      headings.forEach((heading) => {
+        heading.style.color = "#fff";
+      });
+    } else {
+      para.style.color = "#5e6971";
+      headings.forEach((heading) => {
+        heading.style.color = "#36434d";
+      });
     }
 
- 
+    // get the movies
+  }, [ darkMode]);
+  // setDarkMode(darkLightMode)
+  const handleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
+
   return (
     <div className="navbar">
       <nav className="nav">
@@ -25,21 +51,32 @@ const Navbar = ({darkMode, setDarkMode, sidebarOpen, setSidebarOpen}) => {
         </div>
 
         <div className="search-bar">
-            <input type="text" placeholder="Search for a movie" name="search"/>
+          <input type="text" placeholder="Search for a movie" name="search" />
         </div>
         <div className="icons">
-           
-            <div className="dark__mode" onClick={()=>setDarkMode(!darkMode)}>
-                {!darkMode ? <RiMoonFill fill="#797979" />:<RiSunFill fill="#ffff34e1" />}
-            </div>
-            <div className="favorite" onClick={handleSidebar}>
-                    <RiHeartFill />
-            </div>
+          <div
+            className="dark__mode"
+            onClick={ () => setDarkMode(Boolean(!darkMode))}
+          >
+            {!darkMode ? (
+              <RiMoonFill fill="#797979" />
+            ) : (
+              <RiSunFill fill="#ffff34e1" />
+            )}
+          </div>
+          <div className="favorite" onClick={handleSidebar}>
+            <RiHeartFill />
+          </div>
         </div>
       </nav>
-      <Favorite sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} darkMode={darkMode}  style={{
-           right: sidebarOpen ? '0':'-100%'
-        }}/>
+      <Favorite
+        sidebarOpen={sidebarOpen}
+        setSidebarOpen={setSidebarOpen}
+        darkMode={darkMode}
+        style={{
+          right: sidebarOpen ? "0" : "-100%",
+        }}
+      />
     </div>
   );
 };
