@@ -5,6 +5,7 @@ import {
   RiHeartFill,
   RiMoonFill,
   RiSunFill,
+  RiMenu4Line,
 } from "react-icons/ri";
 import Favorite from "./Favorite";
 import Like from "./Like";
@@ -65,7 +66,7 @@ const Navbar = () => {
             )}
           </div>
           <div className="favorite" onClick={handleSidebar}>
-            <RiHeartFill />
+            <RiMenu4Line />
           </div>
         </div>
       </nav>

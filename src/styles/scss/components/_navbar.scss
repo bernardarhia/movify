@@ -33,7 +33,7 @@
             @extend %flex-sb;
             .favorite{
                 svg{
-                    fill: rgb(207, 72, 72);
+                    fill: #797979;
                 }
             }
             .dark__mode{
@@ -52,7 +52,7 @@
             .logo{ 
                 margin-bottom: 1rem;
                 a{
-                    font-size: 1.7rem;
+                    font-size: 1.5rem;
                 }
             }
             .search-bar{

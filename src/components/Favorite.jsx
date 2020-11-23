@@ -7,7 +7,7 @@ const Favorite = ({sidebarOpen, setSidebarOpen, darkMode}) => {
     return (
         <div className="favorite-container" 
         style={{
-           right: sidebarOpen ? '0':'-100%',
+           right: sidebarOpen ? '0':'-200%',
            background:darkMode ? '#fff':'#000'
         }}>
             <div className="close-favorite" onClick={handleSidebar}>

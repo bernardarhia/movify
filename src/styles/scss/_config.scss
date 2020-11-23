@@ -60,3 +60,10 @@ svg{
 .head{
     color: #36434d;
 }
+
+
+@media (max-width:500px){
+    .container{
+        width: 98%;
+    }
+}
