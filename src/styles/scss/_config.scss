@@ -1,0 +1,46 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    outline: none;
+    line-height: 1.3;
+    font-family: Maven Pro;
+    list-style: none;
+    text-decoration: none;
+}
+
+
+body,html{
+    height: 100%;
+    transition: .3s ease;
+}
+
+.container{
+    width: 80%;
+    margin: 2rem auto;
+    padding: 1rem;
+    // border: 1px solid;
+}
+
+
+
+%flex-sb{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+%flex-c{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+svg{
+    cursor: pointer;
+}
+
+
+.react-multiple-carousel__arrow--left,.react-multiple-carousel__arrow--right{
+    display: none !important;
+}

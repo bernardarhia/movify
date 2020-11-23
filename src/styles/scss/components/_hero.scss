@@ -1,0 +1,45 @@
+.hero-section{
+    width: 98%;
+    margin: 5rem auto;
+
+
+    .content{
+        margin: 0 auto;
+        text-align: center;
+        .heading{
+            h1{
+                font-size: 3.5rem;
+                color: $large_text_color;
+
+                span{
+                    color: #0143f8;
+                }
+            }
+        }
+
+        .para{
+            padding-top: 2rem;
+            width: 80%;
+            text-align: center;
+            margin: 0 auto;
+            p{
+                color: $small_text_color;
+                font-size: 1.4rem;
+            }
+        }
+        .cta{
+            margin-top: 1.5rem;
+            button{
+                display: inline-block;
+                padding: 1.3rem 3.5rem;
+                font-size: 1.3rem;
+                background: #0143f8ed;
+                color: #fff;
+                font-weight: 500;
+                border: none;
+                border-radius: 5px;
+
+            }
+        }
+    }
+}

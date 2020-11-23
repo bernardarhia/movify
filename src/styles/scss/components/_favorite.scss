@@ -1,0 +1,14 @@
+.favorite-container{
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 25rem;
+    transition: all .3s;
+    .close-favorite{
+        display: flex;
+        justify-content: flex-end;
+        font-size: 1.5rem;
+        margin: 2rem 2.1rem 0 0;
+    }
+}
