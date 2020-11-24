@@ -1,9 +1,12 @@
-import React from "react";
+import React,{useState} from "react";
 import { RiHeartFill, RiPlayFill } from "react-icons/ri";
+import { Link } from "react-router-dom";
 
 const ShowMovie = ({ movies }) => {
-  const addToFavorite = async (item)=>{
 
+
+  // add movie to favorites
+  const addToFavorite = async (item)=>{
   // check if local storage has it already
   const getFavorite = JSON.parse(localStorage.getItem('favoriteMovies'))
   if(!getFavorite)localStorage.setItem('favoriteMovies',JSON.stringify([item]));
@@ -54,7 +57,9 @@ const ShowMovie = ({ movies }) => {
                   </div>
                   <div className="layer">
                     <div className="player__container">
+                      <Link to={`/movie_details/${item.id}`}>
                       <RiPlayFill />
+                      </Link>
                     </div>
                     <div className="fav">
                       <input type="checkbox" id={`check-${item.id}`} />

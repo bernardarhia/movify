@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { VscChromeClose } from "react-icons/vsc";
 const Favorite = ({ sidebarOpen, setSidebarOpen, darkMode }) => {
   const [favoriteMovies, setFavoriteMovies] = useState([]);
-  const [favoriteLoading, setFavoriteLoading] = useState(false);
 
   //  sidebar toggling
   const handleSidebar = () => {
@@ -44,21 +43,22 @@ const Favorite = ({ sidebarOpen, setSidebarOpen, darkMode }) => {
       <div className="close-favorite" onClick={handleSidebar}>
         <RiCloseLine fill={darkMode ? "#797979" : " #fff"} />
       </div>
-      <h1
+      <p
         style={{
           color: darkMode ? " #36434d" : "#fff",
           textAlign: "center",
           margin: "1rem 0",
+          fontSize:'2rem'
         }}
       >
         Favorites
-      </h1>
+      </p>
 
       <div className="favorite__lists">
         {favoriteMovies.length === 0 && (
-          <h1 className="head" style={{ textAlign: "center" }}>
+          <h4 style={{ textAlign: "center", color:darkMode ?'black':'white' }}>
             No favorites found
-          </h1>
+          </h4>
         )}
         {favoriteMovies.length > 0 && (
           <ul>
@@ -77,14 +77,14 @@ const Favorite = ({ sidebarOpen, setSidebarOpen, darkMode }) => {
             </p>
             {favoriteMovies.map((movie, index) => {
               return (
-                <li key={movie.id}>
+                <li key={movie.id} style={{boxShadow:darkMode ? '0 0 10px #3333332b':''}}>
                   <div className="img">
                     <img
                       src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                       alt=""
                     />
                   </div>
-                  <Link to="">{movie.original_title}</Link>
+                  <Link to={`/movie_details/${movie.id}`}>{movie.original_title}</Link>
                   <div className="del" onClick={() => deleteFavorite(movie)}>
                     <VscChromeClose />
                   </div>

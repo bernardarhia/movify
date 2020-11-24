@@ -1,8 +1,7 @@
 import Axios from "axios";
 import React, { useState, useEffect } from "react";
 import Container from "./Container";
-import localForage from "localforage";
-import { RiHeartFill, RiPlayFill } from "react-icons/ri";
+
 import ShowMovie from "./ShowMovie";
 const Movie = () => {
      const [movies, setMovies] = useState([]);
@@ -13,15 +12,11 @@ const Movie = () => {
   useEffect(() => {
     const getMovies = async () => {
       const movieData = await Axios.get('https://api.themoviedb.org/3/movie/now_playing?api_key=77e8d7def6af64532e8616ab67f7735b&language=en-US&page='+page)
-      // console.log(movieData);
-    //   const data = await localForage.getItem("recommended");
-      console.log(movieData.data.results);
       setMovies(movieData.data.results);
 
     //   get upcoming movies
       const getUpComing = await Axios.get('https://api.themoviedb.org/3/movie/upcoming?api_key=77e8d7def6af64532e8616ab67f7735b&language=en-US&page='+page);
       setupComingMovies(getUpComing.data.results)
-      console.log(getUpComing.data);
     };
     getMovies();
 
@@ -29,6 +24,7 @@ const Movie = () => {
 
   }, [page]);
   return (
+    <>
     <Container>
       <div className="movie__container">
         <div className="top__rating">
@@ -57,6 +53,7 @@ const Movie = () => {
           }}>Next</button>
       </div>
     </Container>
+    </>
   );
 };
 

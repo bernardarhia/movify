@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   RiMovie2Line,
-  RiHeartFill,
   RiMoonFill,
   RiSunFill,
   RiMenu4Line,
@@ -15,6 +14,7 @@ const Navbar = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   useEffect(() => {
     // setting fonts colors
+    
     const body = document.querySelector("body");
     const para = document.querySelector(".para p");
     const headings = document.querySelectorAll(".head");
@@ -32,6 +32,10 @@ const Navbar = () => {
       });
     }
 
+
+      // return ()=>{
+
+      // }
     // get the movies
   }, [ darkMode]);
   // setDarkMode(darkLightMode)
