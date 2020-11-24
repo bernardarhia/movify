@@ -8,7 +8,7 @@ import {
 } from "react-icons/ri";
 import Favorite from "./Favorite";
 import Like from "./Like";
-const Navbar = () => {
+const Navbar = ({disabled}) => {
   
   const [darkMode, setDarkMode] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -56,7 +56,7 @@ const Navbar = () => {
         </div>
 
         <div className="search-bar">
-          <input type="text" placeholder="Search for a movie" name="search" />
+          <input type="text" placeholder="Search for a movie" name="search" disabled={disabled}/>
         </div>
         <div className="icons">
           <div

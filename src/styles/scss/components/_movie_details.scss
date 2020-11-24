@@ -1,0 +1,9 @@
+.movie__details-container{
+    border: 1px solid red;
+   display: grid;
+   grid-template-columns: 60% 40%;
+    .video__Player{
+        border: 1px solid blue;
+        height: 60vh;
+    }
+}
