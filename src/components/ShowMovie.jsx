@@ -15,9 +15,7 @@ const ShowMovie = ({ movies }) => {
     const newData = JSON.parse(localStorage.getItem('favoriteMovies'));
     
     let idArrays = [];
-    newData.map((data)=>{
-         idArrays.push(data.id);
-    })
+    newData.map((data)=>idArrays.push(data.id))
   if(idArrays.includes(item.id)){
     alert(`${item.original_title} is already in favorites`)
     return;
