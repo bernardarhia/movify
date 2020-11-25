@@ -7,7 +7,6 @@ import {
   RiMenu4Line,
 } from "react-icons/ri";
 import Favorite from "./Favorite";
-import Like from "./Like";
 const Navbar = ({disabled}) => {
   
   const [darkMode, setDarkMode] = useState(false);
@@ -51,7 +50,7 @@ const Navbar = ({disabled}) => {
             <span>
               <RiMovie2Line />
             </span>{" "}
-            Movify <Like />
+            Movify 
           </Link>
         </div>
 

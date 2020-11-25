@@ -1,9 +1,8 @@
-import React,{useState} from "react";
+import React from "react";
 import { RiHeartFill, RiPlayFill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 
 const ShowMovie = ({ movies }) => {
-
 
   // add movie to favorites
   const addToFavorite = async (item)=>{
@@ -28,6 +27,7 @@ const ShowMovie = ({ movies }) => {
   }
   return (
     <>
+
       <div className="rated">
         {movies.length > 0 &&
           movies.map((item, index) => {
@@ -35,7 +35,7 @@ const ShowMovie = ({ movies }) => {
               <div className="rates" key={index}>
                 <div className="img">
                   <img
-                    src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
+                    src={`https://image.tmdb.org/t/p/w300/${item.poster_path}`}
                     alt=""
                   />
                   <div

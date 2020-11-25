@@ -1,6 +1,7 @@
 import Axios from "axios";
 import React, { useState, useEffect } from "react";
 import Container from "./Container";
+import Loader from "./Loader";
 
 import ShowMovie from "./ShowMovie";
 const Movie = () => {
@@ -8,15 +9,21 @@ const Movie = () => {
      const [upComingMovies, setupComingMovies] = useState([]);
     const [popular, setPopular] = useState([])
     const [page,setPage] = useState(1)
+    const  [loading, setLoading] = useState(true)
+
 
   useEffect(() => {
     const getMovies = async () => {
       const movieData = await Axios.get('https://api.themoviedb.org/3/movie/now_playing?api_key=77e8d7def6af64532e8616ab67f7735b&language=en-US&page='+page)
-      setMovies(movieData.data.results);
-
-    //   get upcoming movies
+      
+      //   get upcoming movies
       const getUpComing = await Axios.get('https://api.themoviedb.org/3/movie/upcoming?api_key=77e8d7def6af64532e8616ab67f7735b&language=en-US&page='+page);
-      setupComingMovies(getUpComing.data.results)
+      
+      if(movieData.data && getUpComing.data){
+        setMovies(movieData.data.results);
+        setupComingMovies(getUpComing.data.results)
+        setLoading(false)
+      }
     };
     getMovies();
 
@@ -25,7 +32,8 @@ const Movie = () => {
   }, [page]);
   return (
     <>
-    <Container>
+     <>
+      <Container>
       <div className="movie__container">
         <div className="top__rating">
           <h1 className="head">Now showing</h1>
@@ -53,6 +61,8 @@ const Movie = () => {
           }}>Next</button>
       </div>
     </Container>
+    </>
+    
     </>
   );
 };

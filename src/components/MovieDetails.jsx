@@ -3,10 +3,18 @@ import React, { useEffect, useState } from "react";
 import Container from "./Container";
 import Loader from "./Loader";
 import Navbar from "./Navbar";
+import Slider from "./Slider";
 
 const MovieDetails = ({ match }) => {
   const [movies, setMovies] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [recommendations, setRecommendations] = useState([])
+
+  const getRecommendations = async (id)=>{
+    const recommended = await Axios.get(`https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=77e8d7def6af64532e8616ab67f7735b&language=en-US&page=1`)
+    setRecommendations(recommended.data.results)
+  }
+ 
 
   useEffect(() => {
     const getMovieDetails = async () => {
@@ -20,10 +28,14 @@ const MovieDetails = ({ match }) => {
         setMovies(video.data);
         setLoading(false);
       }
-      console.log(video.data);
     };
     getMovieDetails();
+
+  getRecommendations(match.params.id)
+  
   }, [match.params.id]);
+
+ 
   return (
     <>
       {loading ? (
@@ -33,6 +45,7 @@ const MovieDetails = ({ match }) => {
           <Navbar disabled={true} />
           {movies && (
             <Container>
+                   
               <div className="movie__details">
                 <div className="movie__details-container">
                   <div className="video__Player">
@@ -44,19 +57,67 @@ const MovieDetails = ({ match }) => {
                       height="100%"
                     ></iframe>
                   </div>
-
                   <div className="content">
-                    <h1 className="head">{movies.original_title}</h1>
+                    {/* title */}
+                    <div
+                      className="head"
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <h1 style={{ flex: 1 }}>{movies.original_title}</h1>
+                      <span
+                        style={{
+                          fontWeight: "600",
+                          color:
+                            movies.status.toLowerCase() === "released"
+                              ? "red"
+                              : "green",
+                        }}
+                      >
+                        {movies.status}
+                      </span>
+                    </div>
+                    {/* overview */}
                     <div className="para">
                       <p>{movies.overview}</p>
                     </div>
-                    <div className="para">
-                      <p><sup>""</sup>{movies.tagline}<sub>""</sub></p>
+                    {/* Tagline */}
+                    <div className="tagline">
+                      <p>*** {movies.tagline} ***</p>
+                    </div>
+
+                    {/* genres */}
+
+                    <div className="genres">
+                      <ul>
+                        {movies.genres.map((genre, index) => {
+                          return (
+                            <li key={index}>
+                              {genre.name.toLowerCase() === "science fiction"
+                                ? genre.name.split(" ")[1]
+                                : genre.name}
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </div>
+                    {/* released dates */}
+                    <div className="released__date para">
+                      <p>released date: {movies.release_date}</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="tags"></div>
+
+
+
+                {/* {recommendations.length > 0 && recommendations.map((rec)=>{
+                  return <img src={`https://image.tmdb.org/t/p/w200/${rec.poster_path}`} alt=""/>
+                })} */}
+                <Slider movies={recommendations} />
               </div>
             </Container>
           )}

@@ -20,7 +20,7 @@ body, html {
   padding: 1rem;
 }
 
-.movie__container .rated, .favorite-container .favorite__lists ul li, .navbar .nav .icons, .navbar .nav {
+.movie__details-container .content .genres ul, .movie__container .rated, .favorite-container .favorite__lists ul li, .navbar .nav .icons, .navbar .nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -28,10 +28,6 @@ body, html {
 
 svg {
   cursor: pointer;
-}
-
-.react-multiple-carousel__arrow--left, .react-multiple-carousel__arrow--right {
-  display: none !important;
 }
 
 ::-webkit-scrollbar {
@@ -231,19 +227,8 @@ svg {
 .slider {
   margin: 5rem 0;
 }
-.slider .head {
-  margin: 2rem 0 5rem 0;
-}
-.slider .slider__card {
-  margin: 0 1rem;
-  padding: 0.5rem;
-  height: 450px;
-}
-.slider .slider__card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 10px;
+.slider .slider__Card {
+  padding: 1rem;
 }
 
 .movie__container {
@@ -494,13 +479,64 @@ a {
 }
 
 .movie__details-container {
-  border: 1px solid red;
+  width: 100%;
   display: grid;
-  grid-template-columns: 60% 40%;
+  margin-bottom: 5rem;
+  grid-template-columns: 50% 50%;
 }
 .movie__details-container .video__Player {
-  border: 1px solid blue;
   height: 60vh;
+}
+.movie__details-container .content {
+  padding: 1rem 1.5rem;
+  margin: 3.5rem 0 0 0;
+}
+.movie__details-container .content .para {
+  margin-top: 2rem;
+}
+.movie__details-container .content .para p {
+  line-height: 1.6;
+}
+.movie__details-container .content .tagline {
+  margin-top: 2rem;
+}
+.movie__details-container .content .tagline p {
+  color: #afafaf;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.movie__details-container .content .genres {
+  margin-top: 2em;
+}
+.movie__details-container .content .genres ul li {
+  padding: 0.9rem;
+  margin: 0 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 2px;
+}
+.movie__details-container .content .genres ul li:nth-child(1) {
+  color: rgba(255, 46, 46, 0.87);
+  background: #ffd6d6;
+  margin-left: 0;
+}
+.movie__details-container .content .genres ul li:nth-child(2) {
+  color: #2e2eff;
+  background: #d6d6ff;
+}
+.movie__details-container .content .genres ul li:nth-child(3) {
+  color: rgba(255, 255, 52, 0.882);
+  background: rgba(255, 255, 52, 0.2);
+}
+.movie__details-container .content .genres ul li:nth-child(4) {
+  color: #2eff2e;
+  background: #d6ffd6;
+}
+
+@media (max-width: 980px) {
+  .movie__details-container {
+    display: block;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
