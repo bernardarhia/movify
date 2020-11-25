@@ -2,7 +2,6 @@ import Axios from "axios";
 import React, { useEffect, useState } from "react";
 import Container from "./Container";
 import Loader from "./Loader";
-import Navbar from "./Navbar";
 import Slider from "./Slider";
 
 const MovieDetails = ({ match }) => {
@@ -15,8 +14,8 @@ const MovieDetails = ({ match }) => {
 
     if(recommended.data){
       setRecommendations(recommended.data.results)
-      console.log(recommended.data);
     }
+    
   }
  
 
@@ -30,7 +29,6 @@ const MovieDetails = ({ match }) => {
 
       if (video.data) {
         setMovies(video.data);
-        console.log(video.data);
         setLoading(false);
       }
     };
@@ -47,7 +45,6 @@ const MovieDetails = ({ match }) => {
         <Loader />
       ) : (
         <>
-          <Navbar disabled={true} />
           {movies && (
             <Container>
                    
@@ -112,7 +109,7 @@ const MovieDetails = ({ match }) => {
                     </div>
                     {/* released dates */}
                     <div className="released__date para">
-                      <p>released date: {movies.release_date}</p>
+                      <p style={{color:"#ccc"}}>released date: {movies.release_date}</p>
                     </div>
                   </div>
                 </div>

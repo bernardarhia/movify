@@ -11,6 +11,8 @@ const Loader = () => {
     <div className="side side4"></div>
     <div className="side side5"></div>
     <div className="side side6"></div>
+    <div className="head"></div>
+    <div className="para"><p></p></div>
   </div>
 </div>  
        

@@ -3,7 +3,6 @@ import "react-multi-carousel/lib/styles.css";
 import { Link } from "react-router-dom";
 
 const SuperSlider = ({ movies }) => {
-    console.log(movies);
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -39,7 +38,6 @@ const SuperSlider = ({ movies }) => {
       >
         {movies.length > 0 &&
           movies.map((movie) => {
-              console.log(movie)
             return (
               <div key={movie.id} className="">
                 <Link

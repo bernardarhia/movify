@@ -1,15 +1,13 @@
 import React from 'react'
 import Hero from './Hero'
 import Movie from './Movie'
-import Navbar from './Navbar'
 
-const Home = () => {
+const Home = ({search, setLoading}) => {
     return (
         <>
-
-        <Navbar/>
-          <Hero />
-          <Movie /> 
+  {search}
+          <Hero />   
+          <Movie searchData={search} setLoading={setLoading} /> 
         </>
     )
 }

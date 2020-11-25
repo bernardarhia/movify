@@ -7,6 +7,7 @@ import {
   RiMenu4Line,
 } from "react-icons/ri";
 import Favorite from "./Favorite";
+import { createRealm } from "use-realm";
 const Navbar = ({disabled}) => {
   
   const [darkMode, setDarkMode] = useState(false);
@@ -55,7 +56,9 @@ const Navbar = ({disabled}) => {
         </div>
 
         <div className="search-bar">
-          <input type="text" placeholder="Search for a movie" name="search" disabled={disabled}/>
+          <input type="text" placeholder="Search for a movie" name="search" disabled={disabled} onChange={(e)=>{
+            const searchValue = createRealm(e.target.value);
+          }} />
         </div>
         <div className="icons">
           <div
