@@ -11,8 +11,12 @@ const MovieDetails = ({ match }) => {
   const [recommendations, setRecommendations] = useState([])
 
   const getRecommendations = async (id)=>{
-    const recommended = await Axios.get(`https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=77e8d7def6af64532e8616ab67f7735b&language=en-US&page=1`)
-    setRecommendations(recommended.data.results)
+    const recommended = await Axios.get(`https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=77e8d7def6af64532e8616ab67f7735b&language=en-US&page=1`);
+
+    if(recommended.data){
+      setRecommendations(recommended.data.results)
+      console.log(recommended.data);
+    }
   }
  
 
@@ -26,6 +30,7 @@ const MovieDetails = ({ match }) => {
 
       if (video.data) {
         setMovies(video.data);
+        console.log(video.data);
         setLoading(false);
       }
     };
@@ -49,13 +54,13 @@ const MovieDetails = ({ match }) => {
               <div className="movie__details">
                 <div className="movie__details-container">
                   <div className="video__Player">
-                    <iframe
+                    {movies.videos.results.length > 0 ? <iframe
                       title="movie"
                       src={`https://youtube.com/embed/${movies.videos.results[0].key}`}
                       frameBorder="0"
                       width="100%"
                       height="100%"
-                    ></iframe>
+                    ></iframe> :<h1 style={{display:"flex",alignItems:"center",justifyContent:"center",height:'100%'}}>{movies.original_title} has no videos to display yet</h1>}
                   </div>
                   <div className="content">
                     {/* title */}
@@ -85,10 +90,11 @@ const MovieDetails = ({ match }) => {
                       <p>{movies.overview}</p>
                     </div>
                     {/* Tagline */}
-                    <div className="tagline">
+                    {movies.tagline&& <div className="tagline">
                       <p>*** {movies.tagline} ***</p>
                     </div>
-
+ }
+                   
                     {/* genres */}
 
                     <div className="genres">
@@ -113,10 +119,6 @@ const MovieDetails = ({ match }) => {
 
 
 
-
-                {/* {recommendations.length > 0 && recommendations.map((rec)=>{
-                  return <img src={`https://image.tmdb.org/t/p/w200/${rec.poster_path}`} alt=""/>
-                })} */}
                 <Slider movies={recommendations} />
               </div>
             </Container>

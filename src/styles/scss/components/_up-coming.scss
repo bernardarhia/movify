@@ -1,0 +1,27 @@
+.up_coming{
+    margin: 7rem 0;
+}
+
+@media (max-width:768px){
+    .up_coming{
+       
+            .head{
+                text-align: center;
+            }
+            .rated{
+               display: block;
+               width: 100%;
+               .rates{
+                   width: 100%;
+                       
+                        .details{
+                            display: block !important;
+                            text-align: center;
+                        }
+                        .img{
+                            width: 100%;
+                    }
+            }
+        }
+        }
+    }

@@ -67,3 +67,23 @@
     display: block;
 }
 }
+
+@media (max-width:600px){
+.movie__details-container{
+   .content{
+       .head{
+           h1{
+               font-size: 1.4rem;
+           }
+       }
+       .genres{
+           ul{
+               display: block;
+               li{
+                   margin: 1rem 0;
+               }
+           }
+       }
+   }
+}
+}
