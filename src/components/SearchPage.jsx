@@ -38,6 +38,7 @@ const SearchPage = ({ location, darkMode }) => {
                     <Link
                       to={`/movie_details/${searchedMovie.id}`}
                       style={{ display: "block", textAlign: "initial" }}
+                      key={index + searchedMovie.id}
                     >
                       <div className="result" key={index + searchedMovie.id}>
                         <div className="img">

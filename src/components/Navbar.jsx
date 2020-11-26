@@ -16,24 +16,25 @@ const Navbar = ({disabled}) => {
   const history = useHistory()
 
   
-async function checkDarkLightMode(){
-  const getDarkLightMode = await localForage.getItem('darkLightMode');
+ function checkDarkLightMode(){
+  const getDarkLightMode =  localStorage.getItem('darkLightMode');
   if(!getDarkLightMode) {
-    await localForage.setItem('darkLightMode',2);
+    localStorage.setItem('darkLightMode','2');
   }
 
-  const getDarkLightMode1 = await localForage.getItem('darkLightMode');
+  const getDarkLightMode1 =  localStorage.getItem('darkLightMode');
 
-  if(getDarkLightMode1 === 1) {
+  if(getDarkLightMode1 === '1') {
     setDarkMode(false)
-  }else if(getDarkLightMode1 === 2){
+  }else if(getDarkLightMode1 === '2'){
     setDarkMode(true)
   }
 }
 
   useEffect(() => {
-    // setting fonts colors
     checkDarkLightMode()
+    // setting fonts colors
+   const styler = ()=>{
     const body = document.querySelector("body");
     const para = document.querySelector(".para p");
     const headings = document.querySelectorAll(".head");
@@ -50,6 +51,9 @@ async function checkDarkLightMode(){
         heading.style.color = "#36434d";
       });
     }
+   }
+
+   styler()
 
   }, [ darkMode]);
   const handleSidebar = () => {
@@ -83,14 +87,14 @@ async function checkDarkLightMode(){
         <div className="icons">
           <div
             className="dark__mode"
-            onClick={ async () =>{ 
+            onClick={  () =>{ 
               setDarkMode(!darkMode)
-              const checkLightMode = await localForage.getItem('darkLightMode');
-              if(checkLightMode === 1){
-                await localForage.setItem('darkLightMode',2)
+              const checkLightMode =  localStorage.getItem('darkLightMode');
+              if(checkLightMode === '1'){
+                localStorage.setItem('darkLightMode','2')
               }
-              else if(checkLightMode === 2){
-                await localForage.setItem('darkLightMode',1)
+              else if(checkLightMode === '2'){
+                 localStorage.setItem('darkLightMode','1')
    
               }
             }}

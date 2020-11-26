@@ -15,18 +15,8 @@ import SearchPage from "./components/SearchPage";
 import Navbar from "./components/Navbar";
 
 function App() {
-  const [darkMode, setDarkMode] = useState(null);
   const [ loading, setLoading] = useState(false)
   
-  
- 
-
-
-
-  // useEffect(() => {
-  //  checkDarkLightMode();
-   
-  // }, []);
   
  
   return (
