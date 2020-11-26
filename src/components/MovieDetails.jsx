@@ -2,6 +2,7 @@ import Axios from "axios";
 import React, { useEffect, useState } from "react";
 import Container from "./Container";
 import Loader from "./Loader";
+import Navbar from "./Navbar";
 import Slider from "./Slider";
 
 const MovieDetails = ({ match }) => {
@@ -41,6 +42,7 @@ const MovieDetails = ({ match }) => {
  
   return (
     <>
+    <Navbar />
       {loading ? (
         <Loader />
       ) : (

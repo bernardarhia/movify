@@ -13,7 +13,7 @@ const ShowMovie = ({ movies }) => {
         {movies.length > 0 &&
           movies.map((movie, index) => {
             return (
-              <div className="rates" key={index}>
+              <div className="rates" key={index + movie.id}>
                 <div className="img">
                   <img
                     src={movie.poster_path ? `https://image.tmdb.org/t/p/w300/${movie.poster_path}`:'https://www.pexels.com/photo/274937/download/?search_query=movie&tracking_id=9c5h6odcgud'}

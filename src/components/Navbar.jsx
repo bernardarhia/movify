@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import {
   RiMovie2Line,
   RiMoonFill,
@@ -7,14 +7,33 @@ import {
   RiMenu4Line,
 } from "react-icons/ri";
 import Favorite from "./Favorite";
-import { createRealm } from "use-realm";
+import localForage from 'localforage';
+
 const Navbar = ({disabled}) => {
-  
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(null)
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [search, setSearch] = useState("");
+  const history = useHistory()
+
+  
+async function checkDarkLightMode(){
+  const getDarkLightMode = await localForage.getItem('darkLightMode');
+  if(!getDarkLightMode) {
+    await localForage.setItem('darkLightMode',2);
+  }
+
+  const getDarkLightMode1 = await localForage.getItem('darkLightMode');
+
+  if(getDarkLightMode1 === 1) {
+    setDarkMode(false)
+  }else if(getDarkLightMode1 === 2){
+    setDarkMode(true)
+  }
+}
+
   useEffect(() => {
     // setting fonts colors
-    
+    checkDarkLightMode()
     const body = document.querySelector("body");
     const para = document.querySelector(".para p");
     const headings = document.querySelectorAll(".head");
@@ -32,15 +51,18 @@ const Navbar = ({disabled}) => {
       });
     }
 
-
-      // return ()=>{
-
-      // }
-    // get the movies
   }, [ darkMode]);
-  // setDarkMode(darkLightMode)
   const handleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
+  };
+  const sendSearchData = (e) => {
+    if (e.key === "Enter" && e.target.value !== '') {
+      setSearch(e.target.value)
+      history.push({pathname:'/search_movie/search',state:{
+        path:e.target.value
+      }})
+      e.target.value = ''
+    }
   };
 
   return (
@@ -56,14 +78,22 @@ const Navbar = ({disabled}) => {
         </div>
 
         <div className="search-bar">
-          <input type="text" placeholder="Search for a movie" name="search" disabled={disabled} onChange={(e)=>{
-            const searchValue = createRealm(e.target.value);
-          }} />
+          <input type="text" placeholder="Search for a movie" name="search" disabled={disabled} onKeyPress={sendSearchData} />
         </div>
         <div className="icons">
           <div
             className="dark__mode"
-            onClick={ () => setDarkMode(Boolean(!darkMode))}
+            onClick={ async () =>{ 
+              setDarkMode(!darkMode)
+              const checkLightMode = await localForage.getItem('darkLightMode');
+              if(checkLightMode === 1){
+                await localForage.setItem('darkLightMode',2)
+              }
+              else if(checkLightMode === 2){
+                await localForage.setItem('darkLightMode',1)
+   
+              }
+            }}
           >
             {!darkMode ? (
               <RiMoonFill fill="#797979" />

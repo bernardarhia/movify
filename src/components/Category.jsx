@@ -46,8 +46,7 @@ const Category = ({ movies }) => {
           {movies.length > 0 &&
             movies.map((movie, index) => {
               return (
-                <>
-                  <div className="cat__container">
+                  <div className="cat__container" key={index+movie.id+movie.poster_path}>
                     <div className="img">
                       <img
                         src={
@@ -75,7 +74,6 @@ const Category = ({ movies }) => {
                     </div>
                     </div>
                   </div>
-                </>
               );
             })}
         </Carousel>

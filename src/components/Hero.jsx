@@ -1,6 +1,6 @@
 import React from "react";
 import Container from "./Container";
-
+// import {useLocation} from 'react-router-dom'
 const Hero = () => {
   return (
       <div className="hero-section">

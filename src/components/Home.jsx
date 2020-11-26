@@ -6,7 +6,8 @@ import Movie from './Movie'
 const Home = ({search, setLoading}) => {
     return (
         <>
-  {search}
+        <div className="head" style={{display:'none'}}></div>
+        <div className="para" style={{display:'none'}}><p></p></div>
           <Hero />   
           <Movie searchData={search} setLoading={setLoading} /> 
           <Footer />

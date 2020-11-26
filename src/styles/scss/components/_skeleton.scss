@@ -1,0 +1,115 @@
+%bf{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background:rgba(255,255,255,.2);
+    transform: skewX(-20deg);
+    animation: rotate 1.5s 0s infinite;
+}
+
+.skeleton-article{
+    width: 100%;
+    padding: .4rem;
+     .skeleton-results{
+         display: grid;
+         grid-template-columns: 80px auto;
+         grid-gap: 1.3rem;
+         margin: 2rem 0;
+         border: 1px solid #ccc;
+         background: #dddddd3b;
+         position: relative;
+         overflow: hidden;
+         .skeleton__img{
+            background: #64646438;
+           padding: .3rem;
+           position: relative;
+           overflow: hidden;
+
+           &:before {
+            @extend %bf;
+        }
+        }
+        .skeleton__content{
+            width: 90%;
+            .skeleton__header{
+                margin:1rem 0;
+                background:#64646438;
+                padding: .5rem;
+                width: 100px;
+                border-radius: 10px;
+                position: relative;
+                overflow: hidden;
+
+                &:before {
+                    @extend %bf;
+                }
+
+            }
+            .skeleton__text{
+                margin:1rem 0;
+                background: #64646438;
+                padding: .5rem;
+                border-radius: 10px;
+                position: relative;
+                overflow: hidden;
+                &:before {
+                    @extend %bf;
+                }
+
+            }
+            .skeleton__released__date{
+                margin-top: .3rem;
+                margin-bottom: 1rem;
+                background: #64646438;
+               width: 60px;
+               padding: .5rem;
+               border-radius: 10px;
+               position: relative;
+               overflow: hidden;
+               &:before {
+                @extend %bf;
+            }
+            }
+        }
+       
+     }
+
+    
+}
+
+@keyframes rotate {
+    0%{
+        transform:translateX(-150%);
+    }
+    50%{
+        transform:translateX(-60%);
+    }
+    100%{
+        transform:translateX(150%);
+    }
+}
+.search-results--container{
+
+    .result{
+        .img{
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .content{
+            margin:1rem 1.4rem;
+            .released__date{
+                margin-top: .3rem;
+                margin-bottom: 1rem;
+                p{
+                    color: #b6b6b6;
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+}
