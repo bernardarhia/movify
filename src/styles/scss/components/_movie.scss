@@ -1,7 +1,41 @@
 .movie__container{
     padding: 1rem;
 
- 
+ .tags{
+     margin-top: 2rem;
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     li{
+        padding: .8rem;
+         display: flex;
+        //  background: #ccc;
+         border: 1px solid #ccc;
+         font-size: .8rem;
+         font-weight: 500;
+         position: relative;
+         z-index: 5555;
+         overflow: hidden;
+         &::before{
+             content: "";
+            position: absolute;
+            top: 0;
+            width: 0;
+            height: 100%;
+            left: 0;
+            background: #fff;
+            z-index: -14;
+            transition:.3s ease;
+         }
+         &:hover::before{
+            width: 100%;
+         }
+         &:hover{
+             color: #333 !important;
+         }
+
+     }
+ }
         margin-bottom: 6rem;
        .rated{
            margin-top: 2.5rem;
@@ -141,6 +175,10 @@
 
 @media (max-width:768px){
     .movie__container{
+        .tags{
+           display: none;
+        }
+           
         .top__rating{
             .head{
                 text-align: center;

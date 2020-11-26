@@ -14,10 +14,13 @@ const Movie = ({ searchData, setLoading }) => {
 
   useEffect(() => {
     const getMovies = async () => {
+      // get now playing movies
       const movieData = await Axios.get(
         "https://api.themoviedb.org/3/movie/now_playing?api_key=77e8d7def6af64532e8616ab67f7735b&language=en-US&page=" +
           page
       );
+
+      // get top rated movies
       const topRated = await Axios.get(
         "https://api.themoviedb.org/3/movie/top_rated?api_key=77e8d7def6af64532e8616ab67f7735b&language=en-US&page=1"
       );

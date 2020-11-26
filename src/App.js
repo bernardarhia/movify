@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, useHistory, useParams } from "react-router-dom";
 import Home from "./components/Home";
 import MovieDetails from "./components/MovieDetails";
 import { useState, useEffect } from "react";
@@ -12,14 +12,25 @@ import {
 } from "react-icons/ri";
 import Favorite from "./components/Favorite";
 import Loader from "./components/Loader";
+import SearchPage from "./components/SearchPage";
 function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [search, setSearch] = useState("");
   const [ loading, setLoading] = useState(false)
+  
+  // const {slug} = useParams();
+  const sendSearchData = (e) => {
+    if (e.key === "Enter" && e.target.value !== '') {
+      setSearch(e.target.value)
+      e.target.value = ''
+      window.location.href = `/search_movie`
+    }
+  };
+  const history = useHistory()
   useEffect(() => {
     // setting fonts colors
-
+    
     const body = document.querySelector("body");
     const para = document.querySelector(".para p");
     const headings = document.querySelectorAll(".head");
@@ -36,20 +47,15 @@ function App() {
         heading.style.color = "#36434d";
       });
     }
-    // get the movies
+    
+    return ()=>[body,para,headings]
   }, [darkMode]);
-  // setDarkMode(darkLightMode)
+  
   const handleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
-
-  const sendSearchData = (e) => {
-    if (e.key === "Enter" && e.target.value !== '') {
-      setSearch(e.target.value)
-      e.target.value = ''
-      setLoading(true)
-    }
-  };
+  
+ 
   return (
     <>
       <div className="gallery-container">
@@ -70,7 +76,7 @@ function App() {
                   type="text"
                   placeholder="Search for a movie"
                   name="search"
-                  // onKeyPress={sendSearchData}
+                  onKeyPress={sendSearchData}
                 />
                 {search}
               </div>
@@ -106,6 +112,9 @@ function App() {
               render={(props) => <Home {...props} search={search} setLoading={setLoading} />}
             />}
             <Route path="/movie_details/:id" exact component={MovieDetails} />
+            <Route  path="/search_movie"
+              exact
+              render={(props) => <SearchPage {...props} search={search} setLoading={setLoading} />} />
           </Switch>
         </Router>
       </div>
