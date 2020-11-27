@@ -9,7 +9,7 @@ const MovieDetails = ({ match }) => {
   const [movies, setMovies] = useState(null);
   const [loading, setLoading] = useState(true);
   const [recommendations, setRecommendations] = useState([])
-
+const  [color, setColor] = useState(null)
   const getRecommendations = async (id)=>{
     const recommended = await Axios.get(`https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=77e8d7def6af64532e8616ab67f7735b&language=en-US&page=1`);
 
@@ -37,6 +37,8 @@ const MovieDetails = ({ match }) => {
 
   getRecommendations(match.params.id)
   
+  const color = localStorage.getItem('darkLightMode');
+  setColor(color)
   }, [match.params.id]);
 
  

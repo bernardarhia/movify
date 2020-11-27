@@ -60,11 +60,11 @@ const Movie = ({ searchData }) => {
                 <h1 className="head movie__header">Now showing</h1>
 
                 <ShowMovie movies={movies} />
-  {movies.length === 0 && <div className="shimmer">{[1,2,3,4].map(()=><MovieSkeleton />)}</div>}
+  {movies.length === 0 && <div className="shimmer">{[1,2,3,4].map((m, index)=><MovieSkeleton key={index}/>)}</div>}
               </div>
                 <div className="category" style={{margin:"10rem 0"}}>
                   <Category movies={category} />
-                  {category.length === 0 && <div className="shimmer">{[1,2,3,4].map(()=><MovieSkeleton />)}</div>}
+                  {category.length === 0 && <div className="shimmer">{[1,2,3,4].map((m,index)=><MovieSkeleton key={index}/>)}</div>}
 
                 </div>
               <div className="up_coming">
@@ -72,7 +72,7 @@ const Movie = ({ searchData }) => {
                   Up coming movies
                 </h1>
                 <ShowMovie movies={upComingMovies} />
-                {upComingMovies.length === 0 && <div className="shimmer">{[1,2,3,4].map(()=><MovieSkeleton />)}</div>}
+                {upComingMovies.length === 0 && <div className="shimmer">{[1,2,3,4].map((m,index)=><MovieSkeleton key={index}/>)}</div>}
 
               </div>
             </div>

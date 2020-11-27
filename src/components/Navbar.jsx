@@ -19,7 +19,7 @@ const Navbar = ({disabled}) => {
  function checkDarkLightMode(){
   const getDarkLightMode =  localStorage.getItem('darkLightMode');
   if(!getDarkLightMode) {
-    localStorage.setItem('darkLightMode','2');
+    localStorage.setItem('darkLightMode','1');
   }
 
   const getDarkLightMode1 =  localStorage.getItem('darkLightMode');
@@ -36,17 +36,21 @@ const Navbar = ({disabled}) => {
     // setting fonts colors
    const styler = ()=>{
     const body = document.querySelector("body");
-    const para = document.querySelector(".para p");
+    const para = document.querySelectorAll(".para p");
     const headings = document.querySelectorAll(".head");
 
     body.style.background = !darkMode ? "white" : "#000000ed";
     if (body.style.background === "rgba(0, 0, 0, 0.93)") {
-      para.style.color = "#fff";
+      para.forEach((p) => {
+        p.style.color = "#fff";
+      });
       headings.forEach((heading) => {
         heading.style.color = "#fff";
       });
     } else {
-      para.style.color = "#5e6971";
+      para.forEach((p) => {
+        p.style.color = "#5e6971";
+      });
       headings.forEach((heading) => {
         heading.style.color = "#36434d";
       });
