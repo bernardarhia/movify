@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Category from "./Category";
 import Container from "./Container";
 import MiniLoader from "./MiniLoader";
+import MovieSkeleton from "./MovieSkeleton";
 import ShowMovie from "./ShowMovie";
 const Movie = ({ searchData }) => {
   const [movies, setMovies] = useState([]);
@@ -54,29 +55,28 @@ const Movie = ({ searchData }) => {
     <>
       <>
               <Container>
-          {loading ? <MiniLoader /> : <>{searchedMovies.length > 0 ? (
-            <>
-            <h1 className="head">Results ({searchedMovies.length})</h1>
-            <ShowMovie movies={searchedMovies} />
-            </>
-          ) : (
             <div className="movie__container">
               <div className="top__rating">
-                <h1 className="head">Now showing</h1>
+                <h1 className="head movie__header">Now showing</h1>
 
                 <ShowMovie movies={movies} />
+  {movies.length === 0 && <div className="shimmer">{[1,2,3,4].map(()=><MovieSkeleton />)}</div>}
               </div>
                 <div className="category" style={{margin:"10rem 0"}}>
                   <Category movies={category} />
+                  {category.length === 0 && <div className="shimmer">{[1,2,3,4].map(()=><MovieSkeleton />)}</div>}
+
                 </div>
               <div className="up_coming">
-                <h1 className="head" style={{ margin: "3rem 0" }}>
+                <h1 className="head movie__header" style={{ margin: "3rem 0" }}>
                   Up coming movies
                 </h1>
                 <ShowMovie movies={upComingMovies} />
+                {upComingMovies.length === 0 && <div className="shimmer">{[1,2,3,4].map(()=><MovieSkeleton />)}</div>}
+
               </div>
             </div>
-          )}
+         
 
           <div className="prev">
             <button
@@ -97,7 +97,7 @@ const Movie = ({ searchData }) => {
             >
               Next
             </button>
-          </div> </>}
+          </div> 
         </Container>
       </>
     </>

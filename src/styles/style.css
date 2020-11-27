@@ -45,9 +45,13 @@ svg {
   color: #36434d;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   .container {
     width: 98%;
+  }
+
+  .movie__header {
+    font-size: 1.2rem !important;
   }
 }
 .navbar {
@@ -717,12 +721,6 @@ a {
     transform: rotate(360deg);
   }
 }
-.loading {
-  display: grid;
-  place-items: center;
-  margin-bottom: 10rem;
-}
-
 .footer {
   width: 100%;
   padding: 1rem;
@@ -781,16 +779,16 @@ a {
     font-weight: 500;
   }
 }
-.skeleton-article .skeleton-results .skeleton__content .skeleton__released__date:before, .skeleton-article .skeleton-results .skeleton__content .skeleton__text:before, .skeleton-article .skeleton-results .skeleton__content .skeleton__header:before, .skeleton-article .skeleton-results .skeleton__img:before {
+.movie-skeleton .date:before, .movie-skeleton .title:before, .movie-skeleton .card:before, .skeleton-article .skeleton-results .skeleton__content .skeleton__released__date:before, .skeleton-article .skeleton-results .skeleton__content .skeleton__text:before, .skeleton-article .skeleton-results .skeleton__content .skeleton__header:before, .skeleton-article .skeleton-results .skeleton__img:before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 50%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.09);
+  background: rgba(255, 255, 255, 0.04);
   transform: skewX(-20deg);
-  animation: rotate 1.5s 0s infinite;
+  animation: rotate 1s 0s infinite;
 }
 
 .skeleton-article {
@@ -845,13 +843,10 @@ a {
 }
 @keyframes rotate {
   0% {
-    transform: translateX(-150%);
-  }
-  50% {
-    transform: translateX(-60%);
+    transform: translateX(-100%);
   }
   100% {
-    transform: translateX(150%);
+    transform: translateX(200%);
   }
 }
 .search-results--container .result .img img {
@@ -868,6 +863,53 @@ a {
 .search-results--container .result .content .released__date p {
   color: #b6b6b6;
   font-weight: 500;
+}
+
+.shimmer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.movie-skeleton {
+  margin: 0 1rem;
+}
+.movie-skeleton .card {
+  height: 350px;
+  width: 230px;
+  background: #acacac3b;
+  position: relative;
+  overflow: hidden;
+}
+.movie-skeleton .title {
+  width: 140px;
+  padding: 0.6rem;
+  background: #acacac3b;
+  margin: 1rem 0;
+  overflow: hidden;
+  position: relative;
+}
+.movie-skeleton .date {
+  width: 100px;
+  padding: 0.6rem;
+  background: #acacac3b;
+  margin: 1rem 0;
+  overflow: hidden;
+  position: relative;
+}
+@media (max-width: 600px) {
+  .shimmer {
+    display: block;
+    width: 100%;
+  }
+
+  .movie-skeleton {
+    width: 100%;
+    margin: 0;
+  }
+  .movie-skeleton .card {
+    height: 260px;
+    width: 100%;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

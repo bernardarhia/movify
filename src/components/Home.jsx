@@ -1,7 +1,10 @@
 import React from 'react'
 import Footer from './Footer'
 import Hero from './Hero'
+import MiniLoader from './MiniLoader'
 import Movie from './Movie'
+import MovieSkeleton from './MovieSkeleton'
+import Skeleton from './Skeleton'
 
 const Home = ({search, setLoading}) => {
     return (

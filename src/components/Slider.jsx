@@ -1,6 +1,7 @@
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { Link } from "react-router-dom";
+import MovieSkeleton from "./MovieSkeleton";
 
 const Slider = ({ movies }) => {
   const responsive = {

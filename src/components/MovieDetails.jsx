@@ -42,7 +42,6 @@ const MovieDetails = ({ match }) => {
  
   return (
     <>
-    <Navbar />
       {loading ? (
         <Loader />
       ) : (

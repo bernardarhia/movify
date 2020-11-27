@@ -25,7 +25,7 @@ const Category = ({ movies }) => {
   };
   return (
     <div className="movie__container">
-      <h1 className="head"> Browsed by category</h1>
+      <h1 className="head movie__header"> Browsed by category</h1>
       <ul className="tags">
         {[{genre:'Action', emoji:'🔥'},{genre:'Fiction',emoji:'🤔'},{genre:'Romance',emoji:'❤️'},{genre:'Adventure',emoji:'🌳'},{genre:'Fantasy',emoji:'✨'}].map((genre,index)=>{
           return <li key={index} className="head">{genre.genre} <span>{genre.emoji}</span></li>
